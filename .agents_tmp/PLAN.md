@@ -59,20 +59,26 @@ Use CSS animations for rain, lightning, and arrow flight effects. Separate each 
 ## Step 5: Draw archers with bows and arrows
 **Goal**: Create two archer figures using SVG paths
 **Method**:
-- Create archer figure using `<path>` elements (body, head, arms)
+- Create smaller, proportionally-sized archers (approximately 30-40px tall relative to 800px viewBox)
+- Design archer costume with bright/distinct colors (red cape, golden trim, or armor highlights) to contrast with dark buildings
+- Use `<path>` elements for body, head with helmet, cape/clothing
 - Create bow using curved `<path>` with string line
 - Create arrow using `<line>` for shaft and `<path>` for arrowhead
 - Group each archer in `<g id="archer-left">` and `<g id="archer-right">`
-- Place on two separate buildings (e.g., building 2 and building 5)
+- Place on two separate buildings at roof level
 - Add bow draw animation using CSS keyframes
 
 ## Step 6: Add arrow flight animation
-**Goal**: Animate arrows flying between buildings
+**Goal**: Animate arrows flying between buildings with curved trajectory
 **Method**:
 - Create arrow elements in `<g id="arrows">` group
-- Use CSS keyframes for parabolic arc trajectory
-- Animate one arrow at a time (alternating)
-- Add proper timing so they appear to shoot at each other
+- Use CSS keyframes with cubic-bezier timing for realistic physics:
+  - Fast initial velocity (arrow launches quickly)
+  - Decelerates as it rises (gravity effect)
+  - Accelerates downward as it falls
+- Create separate X and Y animations to achieve parabolic arc
+- Animate one arrow at a time (alternating between archers)
+- Set arrow travel time to ~1.5-2 seconds for visible curve
 
 ## Step 7: Add rain effect with CSS animation
 **Goal**: Create animated rain drops using SVG lines
@@ -101,8 +107,10 @@ Use CSS animations for rain, lightning, and arrow flight effects. Separate each 
 
 - **Build Check**: `npm start` runs Vite dev server successfully
 - **Visual Check**: Skyline renders with multiple distinct buildings
-- **Visual Check**: Two archers visible on separate buildings with bows
-- **Animation Check**: Arrows fly in arc between buildings
+- **Visual Check**: Two archers are proportionally sized (small, ~30-40px tall)
+- **Visual Check**: Archers have distinct costume colors (red/gold/armor) visible against dark buildings
+- **Animation Check**: Arrows fly in curved parabolic arc
+- **Animation Check**: Arrow physics shows acceleration/deceleration (fast launch, slows at peak, accelerates on fall)
 - **Animation Check**: Rain falls continuously from top to bottom
 - **Animation Check**: Lightning flashes intermittently with visible bolt
 - **Responsive Check**: Scene scales properly on narrow (mobile) and wide (desktop) viewports

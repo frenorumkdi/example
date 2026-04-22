@@ -160,52 +160,47 @@ body {
 }
 
 /* Arrow flight animations */
+/* Using separate X (linear) and Y (ease-in-out for gravity effect) animations */
 #arrow-left {
   opacity: 0;
-  animation: arrow-fly-left 2s ease-in-out infinite;
+  animation: 
+    arrow-x-left 1.8s linear infinite,
+    arrow-y-left 1.8s ease-in-out infinite;
 }
 
 #arrow-right {
   opacity: 0;
-  animation: arrow-fly-right 2s ease-in-out infinite;
+  animation: 
+    arrow-x-right 1.8s linear infinite,
+    arrow-y-right 1.8s ease-in-out infinite;
 }
 
-@keyframes arrow-fly-left {
-  0%, 45% {
-    opacity: 0;
-    transform: translate(220px, 260px);
-  }
-  50% {
-    opacity: 1;
-    transform: translate(250px, 250px);
-  }
-  70% {
-    opacity: 1;
-    transform: translate(450px, 280px);
-  }
-  90%, 100% {
-    opacity: 0;
-    transform: translate(720px, 280px);
-  }
+/* X movement: linear - arrow moves across at constant speed */
+@keyframes arrow-x-left {
+  0% { transform: translateX(220px); opacity: 0; }
+  5% { opacity: 1; }
+  95% { opacity: 1; }
+  100% { transform: translateX(720px); opacity: 0; }
 }
 
-@keyframes arrow-fly-right {
-  0%, 45% {
-    opacity: 0;
-    transform: translate(720px, 280px) scale(-1, 1);
-  }
-  50% {
-    opacity: 1;
-    transform: translate(690px, 290px) scale(-1, 1);
-  }
-  70% {
-    opacity: 1;
-    transform: translate(490px, 280px) scale(-1, 1);
-  }
-  90%, 100% {
-    opacity: 0;
-    transform: translate(220px, 280px) scale(-1, 1);
-  }
+@keyframes arrow-x-right {
+  0% { transform: translateX(720px) scale(-1, 1); opacity: 0; }
+  5% { opacity: 1; }
+  95% { opacity: 1; }
+  100% { transform: translateX(220px) scale(-1, 1); opacity: 0; }
+}
+
+/* Y movement: ease-in-out - simulates gravity (slow at peak, fast when falling) */
+@keyframes arrow-y-left {
+  0% { transform: translateY(260px); }
+  50% { transform: translateY(180px); }
+  100% { transform: translateY(280px); }
+}
+
+@keyframes arrow-y-right {
+  0% { transform: translateY(280px); }
+  50% { transform: translateY(380px); }
+  100% { transform: translateY(260px); }
 }
 
 /* Responsive adjustments */

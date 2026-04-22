@@ -59,50 +59,62 @@
       
       <!-- Archers -->
       <g id="archers">
-        <!-- Archer on left building (Building 2) -->
+        <!-- Archer on left building (Building 2) - small ~35px tall -->
         <g id="archer-left" transform="translate(220, 260)">
-          <!-- Body -->
-          <path d="M0,0 L0,25 L5,40 L-5,40 L0,25" fill="#2a2a4a"/>
-          <!-- Head -->
-          <circle cx="0" cy="-8" r="8" fill="#3a3a5a"/>
+          <!-- Red cape behind -->
+          <path d="M-8,5 Q-15,15 -8,35 L8,35 Q15,15 8,5 Z" fill="#8b0000"/>
+          <!-- Body with armor -->
+          <path d="M-4,0 L-4,20 L-6,28 L6,28 L4,20 L4,0 Z" fill="#3a3a5a"/>
+          <path d="M-4,0 L4,0 L4,5 L-4,5 Z" fill="#c0a040" stroke="#c0a040" stroke-width="1"/>
+          <!-- Golden trim -->
+          <path d="M-4,15 L4,15" stroke="#ffd700" stroke-width="2"/>
+          <!-- Head with helmet -->
+          <circle cx="0" cy="-6" r="5" fill="#4a4a6a"/>
+          <path d="M-5,-8 L5,-8 L5,-11 L-5,-11 Z" fill="#c0a040"/>
           <!-- Bow -->
-          <path class="bow" d="M15,-15 Q25,0 15,20" fill="none" stroke="#5a4a2a" stroke-width="3"/>
-          <line class="bow-string" x1="15" y1="-15" x2="15" y2="20" stroke="#aaa" stroke-width="1"/>
-          <!-- Arrow ready to fire -->
+          <path class="bow" d="M12,-12 Q18,0 12,15" fill="none" stroke="#5a4a2a" stroke-width="2"/>
+          <line class="bow-string" x1="12" y1="-12" x2="12" y2="15" stroke="#aaa" stroke-width="1"/>
+          <!-- Arrow ready -->
           <g class="arrow-ready">
-            <line x1="-30" y1="0" x2="30" y2="0" stroke="#5a4030" stroke-width="2"/>
-            <path d="M30,0 L25,-3 L25,3 Z" fill="#5a4030"/>
+            <line x1="-20" y1="0" x2="20" y2="0" stroke="#5a4030" stroke-width="1.5"/>
+            <path d="M20,0 L16,-2 L16,2 Z" fill="#5a4030"/>
           </g>
         </g>
         
         <!-- Archer on right building (Building 5) - facing left -->
         <g id="archer-right" transform="translate(720, 280) scale(-1, 1)">
-          <!-- Body -->
-          <path d="M0,0 L0,25 L5,40 L-5,40 L0,25" fill="#2a2a4a"/>
-          <!-- Head -->
-          <circle cx="0" cy="-8" r="8" fill="#3a3a5a"/>
+          <!-- Red cape behind -->
+          <path d="M-8,5 Q-15,15 -8,35 L8,35 Q15,15 8,5 Z" fill="#8b0000"/>
+          <!-- Body with armor -->
+          <path d="M-4,0 L-4,20 L-6,28 L6,28 L4,20 L4,0 Z" fill="#3a3a5a"/>
+          <path d="M-4,0 L4,0 L4,5 L-4,5 Z" fill="#c0a040" stroke="#c0a040" stroke-width="1"/>
+          <!-- Golden trim -->
+          <path d="M-4,15 L4,15" stroke="#ffd700" stroke-width="2"/>
+          <!-- Head with helmet -->
+          <circle cx="0" cy="-6" r="5" fill="#4a4a6a"/>
+          <path d="M-5,-8 L5,-8 L5,-11 L-5,-11 Z" fill="#c0a040"/>
           <!-- Bow -->
-          <path class="bow" d="M15,-15 Q25,0 15,20" fill="none" stroke="#5a4a2a" stroke-width="3"/>
-          <line class="bow-string" x1="15" y1="-15" x2="15" y2="20" stroke="#aaa" stroke-width="1"/>
-          <!-- Arrow ready to fire -->
+          <path class="bow" d="M12,-12 Q18,0 12,15" fill="none" stroke="#5a4a2a" stroke-width="2"/>
+          <line class="bow-string" x1="12" y1="-12" x2="12" y2="15" stroke="#aaa" stroke-width="1"/>
+          <!-- Arrow ready -->
           <g class="arrow-ready">
-            <line x1="-30" y1="0" x2="30" y2="0" stroke="#5a4030" stroke-width="2"/>
-            <path d="M30,0 L25,-3 L25,3 Z" fill="#5a4030"/>
+            <line x1="-20" y1="0" x2="20" y2="0" stroke="#5a4030" stroke-width="1.5"/>
+            <path d="M20,0 L16,-2 L16,2 Z" fill="#5a4030"/>
           </g>
         </g>
       </g>
       
       <!-- Flying arrows -->
       <g id="arrows">
-        <!-- Arrow from left archer -->
-        <g id="arrow-left">
-          <line x1="0" y1="0" x2="25" y2="0" stroke="#5a4030" stroke-width="2"/>
-          <polygon points="28,0 23,-3 23,3" fill="#5a4030"/>
+        <!-- Arrow from left archer - positioned at origin, CSS animates -->
+        <g id="arrow-left" transform="translate(0, 0)">
+          <line x1="0" y1="0" x2="25" y2="0" stroke="#5a4030" stroke-width="1.5"/>
+          <polygon points="28,0 23,-2 23,2" fill="#5a4030"/>
         </g>
         <!-- Arrow from right archer -->
-        <g id="arrow-right">
-          <line x1="0" y1="0" x2="25" y2="0" stroke="#5a4030" stroke-width="2"/>
-          <polygon points="28,0 23,-3 23,3" fill="#5a4030"/>
+        <g id="arrow-right" transform="translate(0, 0) scale(-1, 1)">
+          <line x1="0" y1="0" x2="25" y2="0" stroke="#5a4030" stroke-width="1.5"/>
+          <polygon points="28,0 23,-2 23,2" fill="#5a4030"/>
         </g>
       </g>
       

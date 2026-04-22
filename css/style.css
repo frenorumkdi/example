@@ -95,33 +95,6 @@ body {
 #rain .raindrop:nth-child(25) { animation: rain-fall 0.85s linear infinite; animation-delay: 0.1s; }
 #rain .raindrop:nth-child(26) { animation: rain-fall 0.95s linear infinite; animation-delay: 0.35s; }
 #rain .raindrop:nth-child(27) { animation: rain-fall 0.8s linear infinite; animation-delay: 0.25s; }
-#rain .raindrop:nth-child(28) { animation: rain-fall 0.7s linear infinite; animation-delay: 0.4s; }
-#rain .raindrop:nth-child(29) { animation: rain-fall 0.9s linear infinite; animation-delay: 0.15s; }
-#rain .raindrop:nth-child(30) { animation: rain-fall 1s linear infinite; animation-delay: 0.5s; }
-#rain .raindrop:nth-child(31) { animation: rain-fall 0.75s linear infinite; animation-delay: 0.05s; }
-#rain .raindrop:nth-child(32) { animation: rain-fall 0.85s linear infinite; animation-delay: 0.3s; }
-#rain .raindrop:nth-child(33) { animation: rain-fall 0.95s linear infinite; animation-delay: 0.45s; }
-#rain .raindrop:nth-child(34) { animation: rain-fall 0.8s linear infinite; animation-delay: 0.2s; }
-#rain .raindrop:nth-child(35) { animation: rain-fall 0.7s linear infinite; animation-delay: 0.35s; }
-#rain .raindrop:nth-child(36) { animation: rain-fall 0.9s linear infinite; animation-delay: 0.1s; }
-#rain .raindrop:nth-child(37) { animation: rain-fall 1.05s linear infinite; animation-delay: 0.25s; }
-#rain .raindrop:nth-child(38) { animation: rain-fall 0.75s linear infinite; animation-delay: 0.4s; }
-#rain .raindrop:nth-child(39) { animation: rain-fall 0.85s linear infinite; animation-delay: 0.15s; }
-#rain .raindrop:nth-child(40) { animation: rain-fall 0.95s linear infinite; animation-delay: 0.5s; }
-#rain .raindrop:nth-child(41) { animation: rain-fall 0.8s linear infinite; animation-delay: 0.05s; }
-#rain .raindrop:nth-child(42) { animation: rain-fall 0.7s linear infinite; animation-delay: 0.3s; }
-#rain .raindrop:nth-child(43) { animation: rain-fall 0.9s linear infinite; animation-delay: 0.45s; }
-#rain .raindrop:nth-child(44) { animation: rain-fall 1s linear infinite; animation-delay: 0.2s; }
-#rain .raindrop:nth-child(45) { animation: rain-fall 0.75s linear infinite; animation-delay: 0.35s; }
-#rain .raindrop:nth-child(46) { animation: rain-fall 0.85s linear infinite; animation-delay: 0.1s; }
-#rain .raindrop:nth-child(47) { animation: rain-fall 0.95s linear infinite; animation-delay: 0.25s; }
-#rain .raindrop:nth-child(48) { animation: rain-fall 0.8s linear infinite; animation-delay: 0.4s; }
-#rain .raindrop:nth-child(49) { animation: rain-fall 0.7s linear infinite; animation-delay: 0.15s; }
-#rain .raindrop:nth-child(50) { animation: rain-fall 0.9s linear infinite; animation-delay: 0.5s; }
-#rain .raindrop:nth-child(51) { animation: rain-fall 1.05s linear infinite; animation-delay: 0.05s; }
-#rain .raindrop:nth-child(52) { animation: rain-fall 0.75s linear infinite; animation-delay: 0.3s; }
-#rain .raindrop:nth-child(53) { animation: rain-fall 0.85s linear infinite; animation-delay: 0.45s; }
-#rain .raindrop:nth-child(54) { animation: rain-fall 0.95s linear infinite; animation-delay: 0.2s; }
 
 @keyframes rain-fall {
   0% {
@@ -132,7 +105,7 @@ body {
     opacity: 0.8;
   }
   100% {
-    transform: translateY(750px);
+    transform: translateY(550px);
     opacity: 0;
   }
 }
@@ -162,6 +135,76 @@ body {
   }
   90%, 92% {
     opacity: 1;
+  }
+}
+
+/* Archer animations */
+#archer-left .arrow-ready {
+  animation: draw-bow-left 2s ease-in-out infinite;
+}
+
+#archer-right .arrow-ready {
+  animation: draw-bow-right 2s ease-in-out infinite;
+}
+
+@keyframes draw-bow-left {
+  0%, 40% { transform: translateX(0); }
+  50%, 90% { transform: translateX(-15px); }
+  100% { transform: translateX(0); }
+}
+
+@keyframes draw-bow-right {
+  0%, 40% { transform: translateX(0); }
+  50%, 90% { transform: translateX(-15px); }
+  100% { transform: translateX(0); }
+}
+
+/* Arrow flight animations */
+#arrow-left {
+  opacity: 0;
+  animation: arrow-fly-left 2s ease-in-out infinite;
+}
+
+#arrow-right {
+  opacity: 0;
+  animation: arrow-fly-right 2s ease-in-out infinite;
+}
+
+@keyframes arrow-fly-left {
+  0%, 45% {
+    opacity: 0;
+    transform: translate(220px, 260px);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(250px, 250px);
+  }
+  70% {
+    opacity: 1;
+    transform: translate(450px, 280px);
+  }
+  90%, 100% {
+    opacity: 0;
+    transform: translate(720px, 280px);
+  }
+}
+
+@keyframes arrow-fly-right {
+  0%, 45% {
+    opacity: 0;
+    transform: translate(720px, 280px) scale(-1, 1);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(690px, 290px) scale(-1, 1);
+  }
+  70% {
+    opacity: 1;
+    transform: translate(490px, 280px) scale(-1, 1);
+  }
+  90%, 100% {
+    opacity: 0;
+    transform: translate(220px, 280px) scale(-1, 1);
   }
 }
 

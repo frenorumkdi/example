@@ -1,35 +1,36 @@
 # 1. OBJECTIVE
 
-Create an animated HTML5 page displaying a city skyline with buildings, rain, lightning, and two archers on separate buildings shooting at each other. All visuals using only SVG paths. The page must be fully responsive (mobile + desktop) with no external plugins or images required. The project should run locally using Vite with `npm start`.
+Create an animated desktop webpage displaying a city skyline with buildings, rain, lightning, and two archers on separate buildings shooting at each other. Use a 2D game framework (Phaser 3) with SNK/Metal Slug inspired sprite graphics. The project should run locally using Vite with `npm start`.
 
 # 2. CONTEXT SUMMARY
 
-- **Project Type**: Single-page animated SVG scene with Vite dev server
-- **Tech Stack**: Plain HTML5, CSS3, JavaScript, Vite
+- **Project Type**: 2D animated game scene with Phaser 3 + Vite
+- **Tech Stack**: HTML5, JavaScript, Phaser 3 (2D game framework), Vite
 - **Constraints**: 
-  - Only SVG paths for visuals (no raster images)
-  - No external plugins
-  - Responsive design for mobile and desktop
+  - Desktop only (no mobile support needed)
+  - SNK/Metal Slug inspired pixel art sprite graphics
+  - No SVG paths - all visuals via sprites/images
+  - No external plugins beyond Phaser
   - Clean, modular code structure
 
 # 3. APPROACH OVERVIEW
 
-Build the scene using layered SVG elements:
-1. **Background Layer**: Gradient sky (dark stormy colors)
-2. **Skyline Layer**: Multiple SVG path-based buildings with varied heights and widths
-3. **Archer Layer**: Two archers with bows and arrows on different buildings
-4. **Arrow Animation Layer**: Animated arrows flying between archers
-5. **Rain Layer**: SVG line elements with CSS animation
-6. **Lightning Layer**: SVG path-based bolt with flash animation
+Build the scene using Phaser 3 with sprite-based graphics:
+1. **Background Layer**: Parallax city silhouette (far background)
+2. **Sky Layer**: Stormy gradient sky with cloud sprites
+3. **Building Layer**: Multiple building sprites with varied heights
+4. **Archer Layer**: Two archer sprites with animation frames (Metal Slug style pixel art)
+5. **Arrow Layer**: Animated arrow sprites with physics-based curved trajectory
+6. **Weather Layer**: Rain particle system and lightning effects
 
-Use CSS animations for rain, lightning, and arrow flight effects. Separate each visual component into distinct SVG groups for maintainability.
+Use Phaser's sprite animation, particle emitters, and physics for realistic movement.
 
 # 4. IMPLEMENTATION STEPS
 
-## Step 1: Initialize Vite project
-**Goal**: Set up Node.js project with Vite for local development
+## Step 1: Initialize Vite project with Phaser 3
+**Goal**: Set up Node.js project with Vite and Phaser 3 for local development
 **Method**: 
-- Create package.json with Vite as dependency
+- Create package.json with Vite and Phaser 3 as dependencies
 - Configure Vite for HTML entry point
 - Add "start" script to package.json
 
@@ -37,81 +38,92 @@ Use CSS animations for rain, lightning, and arrow flight effects. Separate each 
 **Goal**: Set up clean file organization
 **Method**: 
 - Create index.html at root
-- Create css/ and js/ directories for modular code
-- Reference: Main SVG container
+- Create js/ directory with main game entry
+- Create assets/ directory for sprite sheets
+- Create css/ directory for minimal styling (just to center canvas)
 
-## Step 3: Build SVG container and background
-**Goal**: Create responsive SVG canvas with stormy sky gradient
-**Method**: 
-- Use viewBox for responsive scaling (recommended: 800x600 viewBox)
-- Create linear gradient from dark purple to dark blue for sky
-- Reference: Main SVG container
-
-## Step 4: Draw city skyline with SVG paths
-**Goal**: Create multiple buildings using only SVG paths
+## Step 3: Generate sprite graphics (Metal Slug style)
+**Goal**: Create all sprite assets programmatically using canvas
 **Method**:
-- Design 5-7 buildings with varied heights, widths, and architectural details (windows, spires)
-- Use `<path>` elements with d attributes for building shapes
-- Group buildings in a `<g id="skyline">` container
-- Create varied building styles: rectangular, stepped, with antenna/spire
-- Ensure two buildings are at good height/size for archer positions
+- Use JavaScript Canvas API to programmatically generate pixel art sprites
+- Create sprite generator utilities for:
+  - Building sprites (dark silhouettes with window lights)
+  - Archer sprites (4-8 frames: idle, draw bow, release)
+  - Arrow sprite
+  - Bow sprite
+  - Rain drop particles
+  - Lightning bolt sprite
+  - Cloud sprites
+- Use limited color palette (dark blues, purples, grays for background; bright colors for archers)
+- Pixel art aesthetic: sharp edges, limited colors per sprite, chunky pixels
 
-## Step 5: Draw archers with bows and arrows
-**Goal**: Create two archer figures using SVG paths
+## Step 4: Implement Phaser scene structure
+**Goal**: Set up Phaser game with proper scene organization
 **Method**:
-- Create smaller, proportionally-sized archers (approximately 30-40px tall relative to 800px viewBox)
-- Design archer costume with bright/distinct colors (red cape, golden trim, or armor highlights) to contrast with dark buildings
-- Use `<path>` elements for body, head with helmet, cape/clothing
-- Create bow using curved `<path>` with string line
-- Create arrow using `<line>` for shaft and `<path>` for arrowhead
-- Group each archer in `<g id="archer-left">` and `<g id="archer-right">`
-- Place on two separate buildings at roof level
-- Add bow draw animation using CSS keyframes
+- Create main Scene class with preload, create, update methods
+- Set canvas size for desktop (e.g., 1024x768 or fullscreen)
+- Initialize physics system for arrow movement
 
-## Step 6: Add arrow flight animation
-**Goal**: Animate arrows flying between buildings with curved trajectory
+## Step 5: Create background and buildings
+**Goal**: Render city skyline with parallax effect
 **Method**:
-- Create arrow elements in `<g id="arrows">` group
-- Use CSS keyframes with cubic-bezier timing for realistic physics:
-  - Fast initial velocity (arrow launches quickly)
-  - Decelerates as it rises (gravity effect)
-  - Accelerates downward as it falls
-- Create separate X and Y animations to achieve parabolic arc
-- Animate one arrow at a time (alternating between archers)
-- Set arrow travel time to ~1.5-2 seconds for visible curve
+- Generate and load background gradient (stormy sky)
+- Generate building sprites at various heights
+- Place buildings to form city skyline
+- Add subtle window light animations
 
-## Step 7: Add rain effect with CSS animation
-**Goal**: Create animated rain drops using SVG lines
+## Step 6: Create archer sprites and animations
+**Goal**: Create two archers with bow animations
 **Method**:
-- Create multiple `<line>` elements for raindrops
-- Use CSS `@keyframes` animation to move rain downward
-- Vary animation delays and speeds for natural effect
-- Group in `<g id="rain">` container
+- Generate archer sprites with bright costume colors (red cape, gold trim, blue armor)
+- Create sprite sheets for archer animations: idle, drawing bow
+- Place archers on two different buildings
+- Add idle animation (subtle breathing/swaying)
 
-## Step 8: Add lightning effect with CSS animation
-**Goal**: Create intermittent lightning bolt with flash
+## Step 7: Implement arrow shooting with curved trajectory
+**Goal**: Animate arrows flying in parabolic arc with physics
 **Method**:
-- Draw lightning bolt using SVG `<path>`
-- Add flash effect on background using opacity animation
+- Create arrow sprite
+- Implement physics-based movement:
+  - High initial velocity on X axis
+  - Gravity applied to Y axis for realistic curve
+  - Arrow rotates to match trajectory direction
+- Alternate shooting between archers
+- Use appropriate timing (1.5-2 seconds flight)
+
+## Step 8: Add rain effect
+**Goal**: Create falling rain particles
+**Method**:
+- Use Phaser particle emitter for rain
+- Generate rain drop sprites
+- Configure particles to fall from top to bottom with slight angle
+- Vary particle speed and size for natural effect
+
+## Step 9: Add lightning effect
+**Goal**: Create intermittent lightning with flash
+**Method**:
+- Generate lightning bolt sprite
 - Use JavaScript to trigger random lightning strikes
-- Group in `<g id="lightning">` container
+- Flash background briefly when lightning strikes
+- Add screen shake for impact
 
-## Step 9: Add responsive styling
-**Goal**: Ensure works on mobile and desktop
+## Step 10: Desktop-only optimization
+**Goal**: Ensure optimal performance on desktop
 **Method**:
-- Use viewBox with preserveAspectRatio="xMidYMid slice"
-- Add CSS media queries if needed for animation performance
-- Test viewport scaling
+- Set fixed canvas size or fullscreen desktop resolution
+- No touch controls needed
+- Use keyboard or mouse for any interactions (if needed)
+- Enable hardware acceleration
 
 # 5. TESTING AND VALIDATION
 
 - **Build Check**: `npm start` runs Vite dev server successfully
-- **Visual Check**: Skyline renders with multiple distinct buildings
-- **Visual Check**: Two archers are proportionally sized (small, ~30-40px tall)
-- **Visual Check**: Archers have distinct costume colors (red/gold/armor) visible against dark buildings
-- **Animation Check**: Arrows fly in curved parabolic arc
-- **Animation Check**: Arrow physics shows acceleration/deceleration (fast launch, slows at peak, accelerates on fall)
+- **Visual Check**: Skyline renders with multiple distinct building sprites
+- **Visual Check**: Two archer sprites visible on separate buildings with distinct costumes (red/gold/blue)
+- **Visual Check**: Pixel art style matches Metal Slug aesthetic
+- **Animation Check**: Arrows fly in curved parabolic arc with physics
+- **Animation Check**: Arrow shows acceleration (fast launch, slows at peak, accelerates on fall)
 - **Animation Check**: Rain falls continuously from top to bottom
 - **Animation Check**: Lightning flashes intermittently with visible bolt
-- **Responsive Check**: Scene scales properly on narrow (mobile) and wide (desktop) viewports
-- **Code Quality**: No external dependencies, all visuals via SVG paths only
+- **Desktop Check**: Works on desktop browser at proper resolution
+- **Code Quality**: All visuals via programmatically-generated pixel art sprites

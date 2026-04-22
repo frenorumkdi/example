@@ -1,10 +1,13 @@
 {
-  "name": "city-skyline-animated",
+  "name": "city-skyline-phaser",
   "private": true,
   "version": "1.0.0",
   "type": "module",
   "scripts": {
     "start": "vite"
+  },
+  "dependencies": {
+    "phaser": "^3.60.0"
   },
   "devDependencies": {
     "vite": "^5.0.0"

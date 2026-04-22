@@ -1,0 +1,12 @@
+{
+  "name": "city-skyline-animated",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "start": "vite"
+  },
+  "devDependencies": {
+    "vite": "^5.0.0"
+  }
+}

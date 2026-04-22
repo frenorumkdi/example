@@ -1,0 +1,178 @@
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  background-color: #0a0a15;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Scene container */
+.scene-container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#skyline-scene {
+  width: 100%;
+  height: 100%;
+  max-width: 100vw;
+  max-height: 100vh;
+}
+
+/* Building styles */
+.building {
+  stroke: #2a2a40;
+  stroke-width: 1;
+}
+
+.window {
+  fill: #3a3a5a;
+  opacity: 0.8;
+}
+
+.antenna {
+  stroke: #333344;
+  stroke-linecap: round;
+}
+
+.antenna-light {
+  fill: #ff0000;
+  animation: blink 2s infinite;
+}
+
+@keyframes blink {
+  0%, 50%, 100% { opacity: 1; }
+  25%, 75% { opacity: 0.3; }
+}
+
+/* Rain effect */
+.raindrop {
+  stroke: #6699cc;
+  stroke-width: 2;
+  stroke-linecap: round;
+  opacity: 0.6;
+}
+
+#rain .raindrop:nth-child(1) { animation: rain-fall 0.8s linear infinite; }
+#rain .raindrop:nth-child(2) { animation: rain-fall 0.9s linear infinite; animation-delay: 0.1s; }
+#rain .raindrop:nth-child(3) { animation: rain-fall 0.7s linear infinite; animation-delay: 0.2s; }
+#rain .raindrop:nth-child(4) { animation: rain-fall 1s linear infinite; animation-delay: 0.15s; }
+#rain .raindrop:nth-child(5) { animation: rain-fall 0.85s linear infinite; animation-delay: 0.25s; }
+#rain .raindrop:nth-child(6) { animation: rain-fall 0.95s linear infinite; animation-delay: 0.05s; }
+#rain .raindrop:nth-child(7) { animation: rain-fall 0.75s linear infinite; animation-delay: 0.35s; }
+#rain .raindrop:nth-child(8) { animation: rain-fall 1.05s linear infinite; animation-delay: 0.1s; }
+#rain .raindrop:nth-child(9) { animation: rain-fall 0.8s linear infinite; animation-delay: 0.4s; }
+#rain .raindrop:nth-child(10) { animation: rain-fall 0.9s linear infinite; animation-delay: 0.15s; }
+#rain .raindrop:nth-child(11) { animation: rain-fall 0.7s linear infinite; animation-delay: 0.3s; }
+#rain .raindrop:nth-child(12) { animation: rain-fall 0.85s linear infinite; animation-delay: 0.45s; }
+#rain .raindrop:nth-child(13) { animation: rain-fall 0.95s linear infinite; animation-delay: 0.2s; }
+#rain .raindrop:nth-child(14) { animation: rain-fall 0.8s linear infinite; animation-delay: 0.5s; }
+#rain .raindrop:nth-child(15) { animation: rain-fall 1s linear infinite; animation-delay: 0.1s; }
+#rain .raindrop:nth-child(16) { animation: rain-fall 0.75s linear infinite; animation-delay: 0.35s; }
+#rain .raindrop:nth-child(17) { animation: rain-fall 0.9s linear infinite; animation-delay: 0.25s; }
+#rain .raindrop:nth-child(18) { animation: rain-fall 0.85s linear infinite; animation-delay: 0.15s; }
+#rain .raindrop:nth-child(19) { animation: rain-fall 0.95s linear infinite; animation-delay: 0.4s; }
+#rain .raindrop:nth-child(20) { animation: rain-fall 0.7s linear infinite; animation-delay: 0.05s; }
+#rain .raindrop:nth-child(21) { animation: rain-fall 0.8s linear infinite; animation-delay: 0.3s; }
+#rain .raindrop:nth-child(22) { animation: rain-fall 0.9s linear infinite; animation-delay: 0.45s; }
+#rain .raindrop:nth-child(23) { animation: rain-fall 1.05s linear infinite; animation-delay: 0.2s; }
+#rain .raindrop:nth-child(24) { animation: rain-fall 0.75s linear infinite; animation-delay: 0.5s; }
+#rain .raindrop:nth-child(25) { animation: rain-fall 0.85s linear infinite; animation-delay: 0.1s; }
+#rain .raindrop:nth-child(26) { animation: rain-fall 0.95s linear infinite; animation-delay: 0.35s; }
+#rain .raindrop:nth-child(27) { animation: rain-fall 0.8s linear infinite; animation-delay: 0.25s; }
+#rain .raindrop:nth-child(28) { animation: rain-fall 0.7s linear infinite; animation-delay: 0.4s; }
+#rain .raindrop:nth-child(29) { animation: rain-fall 0.9s linear infinite; animation-delay: 0.15s; }
+#rain .raindrop:nth-child(30) { animation: rain-fall 1s linear infinite; animation-delay: 0.5s; }
+#rain .raindrop:nth-child(31) { animation: rain-fall 0.75s linear infinite; animation-delay: 0.05s; }
+#rain .raindrop:nth-child(32) { animation: rain-fall 0.85s linear infinite; animation-delay: 0.3s; }
+#rain .raindrop:nth-child(33) { animation: rain-fall 0.95s linear infinite; animation-delay: 0.45s; }
+#rain .raindrop:nth-child(34) { animation: rain-fall 0.8s linear infinite; animation-delay: 0.2s; }
+#rain .raindrop:nth-child(35) { animation: rain-fall 0.7s linear infinite; animation-delay: 0.35s; }
+#rain .raindrop:nth-child(36) { animation: rain-fall 0.9s linear infinite; animation-delay: 0.1s; }
+#rain .raindrop:nth-child(37) { animation: rain-fall 1.05s linear infinite; animation-delay: 0.25s; }
+#rain .raindrop:nth-child(38) { animation: rain-fall 0.75s linear infinite; animation-delay: 0.4s; }
+#rain .raindrop:nth-child(39) { animation: rain-fall 0.85s linear infinite; animation-delay: 0.15s; }
+#rain .raindrop:nth-child(40) { animation: rain-fall 0.95s linear infinite; animation-delay: 0.5s; }
+#rain .raindrop:nth-child(41) { animation: rain-fall 0.8s linear infinite; animation-delay: 0.05s; }
+#rain .raindrop:nth-child(42) { animation: rain-fall 0.7s linear infinite; animation-delay: 0.3s; }
+#rain .raindrop:nth-child(43) { animation: rain-fall 0.9s linear infinite; animation-delay: 0.45s; }
+#rain .raindrop:nth-child(44) { animation: rain-fall 1s linear infinite; animation-delay: 0.2s; }
+#rain .raindrop:nth-child(45) { animation: rain-fall 0.75s linear infinite; animation-delay: 0.35s; }
+#rain .raindrop:nth-child(46) { animation: rain-fall 0.85s linear infinite; animation-delay: 0.1s; }
+#rain .raindrop:nth-child(47) { animation: rain-fall 0.95s linear infinite; animation-delay: 0.25s; }
+#rain .raindrop:nth-child(48) { animation: rain-fall 0.8s linear infinite; animation-delay: 0.4s; }
+#rain .raindrop:nth-child(49) { animation: rain-fall 0.7s linear infinite; animation-delay: 0.15s; }
+#rain .raindrop:nth-child(50) { animation: rain-fall 0.9s linear infinite; animation-delay: 0.5s; }
+#rain .raindrop:nth-child(51) { animation: rain-fall 1.05s linear infinite; animation-delay: 0.05s; }
+#rain .raindrop:nth-child(52) { animation: rain-fall 0.75s linear infinite; animation-delay: 0.3s; }
+#rain .raindrop:nth-child(53) { animation: rain-fall 0.85s linear infinite; animation-delay: 0.45s; }
+#rain .raindrop:nth-child(54) { animation: rain-fall 0.95s linear infinite; animation-delay: 0.2s; }
+
+@keyframes rain-fall {
+  0% {
+    transform: translateY(0);
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(750px);
+    opacity: 0;
+  }
+}
+
+/* Lightning flash effect */
+#flash-overlay {
+  animation: flash 4s infinite;
+  pointer-events: none;
+}
+
+@keyframes flash {
+  0%, 89%, 91%, 93%, 100% {
+    opacity: 0;
+  }
+  90%, 92% {
+    opacity: 0.7;
+  }
+}
+
+#lightning-bolt {
+  animation: bolt-flash 4s infinite;
+}
+
+@keyframes bolt-flash {
+  0%, 89%, 91%, 93%, 100% {
+    opacity: 0;
+  }
+  90%, 92% {
+    opacity: 1;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .window {
+    width: 12px;
+    height: 15px;
+  }
+  
+  .antenna-light {
+    r: 2;
+  }
+}

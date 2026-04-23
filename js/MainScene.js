@@ -10,6 +10,9 @@ export class MainScene extends Phaser.Scene {
     // Generate sprites programmatically
     const spriteGen = new SpriteGenerator();
     
+    // Preload the NASA moon image
+    this.load.image('moon', 'https://images-assets.nasa.gov/image/PIA00405/PIA00405~large.jpg?w=1920&h=1920&fit=clip&crop=faces%2Cfocalpoint');
+    
     // We'll generate and cache sprites in create()
     this.spriteGen = spriteGen;
   }
@@ -21,6 +24,10 @@ export class MainScene extends Phaser.Scene {
     const skyCanvas = this.spriteGen.generateSky(width, height);
     this.textures.addCanvas('sky', skyCanvas);
     this.add.image(width / 2, height / 2, 'sky');
+    
+    // Add moon image in the upper sky area (positioned behind buildings)
+    this.moon = this.add.image(width - 150, 120, 'moon');
+    this.moon.setScale(0.4);
     
     // Generate and add clouds
     this.clouds = this.add.group();
